@@ -1,4 +1,5 @@
 import { Header } from "./Header";
+import { Leaderboard } from "./LeaderBoard";
 import { VoteSection } from "./VoteSection";
 
 export function DogVotingApp(): JSX.Element {
@@ -6,6 +7,7 @@ export function DogVotingApp(): JSX.Element {
         <>
             <Header />
             <VoteSection />
+            <Leaderboard />
         </>
     );
 }
