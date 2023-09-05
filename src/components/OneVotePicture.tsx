@@ -11,9 +11,13 @@ import { Dog } from "../types/dog";
 
 interface OneVotePictureProps {
     oneDog: Dog;
+    handleVote: (oneDog: Dog) => Promise<void>;
 }
 
-export function OneVotePicture({ oneDog }: OneVotePictureProps): JSX.Element {
+export function OneVotePicture({
+    oneDog,
+    handleVote,
+}: OneVotePictureProps): JSX.Element {
     return (
         <Card maxW="sm">
             <CardBody>
@@ -27,7 +31,11 @@ export function OneVotePicture({ oneDog }: OneVotePictureProps): JSX.Element {
                 </Stack>
             </CardBody>
             <CardFooter>
-                <Button variant="solid" colorScheme="blue">
+                <Button
+                    variant="solid"
+                    colorScheme="blue"
+                    onClick={() => handleVote(oneDog)}
+                >
                     Vote
                 </Button>
             </CardFooter>
