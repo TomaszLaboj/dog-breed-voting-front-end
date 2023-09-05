@@ -1,4 +1,4 @@
-import { greet } from "./greet";
+import { greet } from "../core/greet";
 
 test("greet returns a string, greeting the passed name", () => {
     expect(greet("Zaphod")).toEqual("Hello, Zaphod");
