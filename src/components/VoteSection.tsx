@@ -5,7 +5,7 @@ import { Dog } from "../types/dog";
 import axios from "axios";
 
 export function VoteSection(): JSX.Element {
-    const [dogs, setDogs] = useState<Dog>();
+    const [dogs, setDogs] = useState<Dog[]>();
 
     useEffect(() => {
         async function getAndSetDogs() {
@@ -16,7 +16,7 @@ export function VoteSection(): JSX.Element {
         }
         getAndSetDogs();
     }, []);
-    console.log(dogs);
+
     return (
         <>
             <Heading as="h3" size="lg" p={4}>
@@ -24,8 +24,8 @@ export function VoteSection(): JSX.Element {
             </Heading>
             {dogs && (
                 <HStack>
-                    <OneVotePicture />
-                    <OneVotePicture />
+                    <OneVotePicture oneDog={dogs[0]} />
+                    <OneVotePicture oneDog={dogs[1]} />
                 </HStack>
             )}
         </>
