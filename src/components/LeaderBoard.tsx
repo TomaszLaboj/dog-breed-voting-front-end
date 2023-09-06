@@ -1,8 +1,8 @@
-import { Box, Card, CardBody, Heading, Stack, Text } from "@chakra-ui/react";
 import { TriangleUpIcon } from "@chakra-ui/icons";
-import { LeaderboardDog } from "../types/dog";
-import { useEffect, useState } from "react";
+import { Box, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { LeaderboardDog } from "../types/dog";
 
 export function Leaderboard(): JSX.Element {
     const [leaderboard, setLeaderboard] = useState<LeaderboardDog[]>();
@@ -27,9 +27,11 @@ export function Leaderboard(): JSX.Element {
             >
                 <Stack>
                     <CardBody>
-                        <Heading size="md">{dog.breed_name}</Heading>
-                        {<TriangleUpIcon />}
-                        <Text py="2">{dog.votes}</Text>
+                        <Heading size="md">
+                            {dog.breed_name}
+                            <TriangleUpIcon />
+                            {dog.votes}
+                        </Heading>
                     </CardBody>
                 </Stack>
             </Card>
