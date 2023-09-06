@@ -1,8 +1,8 @@
 import { HStack, Heading } from "@chakra-ui/react";
-import { OneVotePicture } from "./OneVotePicture";
-import { useState, useEffect } from "react";
-import { Dog } from "../types/dog";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { Dog } from "../types/dog";
+import { OneVotePicture } from "./OneVotePicture";
 
 export function VoteSection(): JSX.Element {
     const [dogs, setDogs] = useState<Dog[]>();
