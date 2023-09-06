@@ -4,6 +4,6 @@ export interface Dog {
 }
 
 export interface LeaderboardDog {
-    name: string;
+    breed_name: string;
     votes: number;
 }

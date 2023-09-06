@@ -17,29 +17,31 @@ export function Leaderboard(): JSX.Element {
     useEffect(() => {
         getAndSetLeaderboard();
     }, []);
-
     console.log(leaderboard);
-
+    function formatLeaderboardDog(dog: LeaderboardDog) {
+        return (
+            <Card
+                direction={{ base: "column", sm: "row" }}
+                overflow="hidden"
+                variant="outline"
+            >
+                <Stack>
+                    <CardBody>
+                        <Heading size="md">{dog.breed_name}</Heading>
+                        {<TriangleUpIcon />}
+                        <Text py="2">{dog.votes}</Text>
+                    </CardBody>
+                </Stack>
+            </Card>
+        );
+    }
     return (
         <>
             <Box>
                 <Heading>Top voted dog breeds</Heading>
-                <Card
-                    direction={{ base: "column", sm: "row" }}
-                    overflow="hidden"
-                    variant="outline"
-                >
-                    <Stack>
-                        <CardBody>
-                            <Heading size="md">The perfect latte</Heading>
-                            {<TriangleUpIcon />}
-                            <Text py="2">
-                                Caffè latte is a coffee beverage of Italian
-                                origin made with espresso and steamed milk.
-                            </Text>
-                        </CardBody>
-                    </Stack>
-                </Card>
+                {leaderboard === undefined
+                    ? null
+                    : leaderboard.map((dog) => formatLeaderboardDog(dog))}
             </Box>
         </>
     );
