@@ -1,4 +1,4 @@
-import { HStack, Heading } from "@chakra-ui/react";
+import { Box, HStack, Heading } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Dog } from "../types/dog";
@@ -26,15 +26,23 @@ export function VoteSection(): JSX.Element {
 
     return (
         <>
-            <Heading as="h3" size="lg" p={4}>
-                Pick your favourite
-            </Heading>
-            {dogs && (
-                <HStack>
-                    <OneVotePicture oneDog={dogs[0]} handleVote={handleVote} />
-                    <OneVotePicture oneDog={dogs[1]} handleVote={handleVote} />
-                </HStack>
-            )}
+            <Box>
+                <Heading as="h3" size="lg" p={4}>
+                    Pick your favourite
+                </Heading>
+                {dogs && (
+                    <HStack>
+                        <OneVotePicture
+                            oneDog={dogs[0]}
+                            handleVote={handleVote}
+                        />
+                        <OneVotePicture
+                            oneDog={dogs[1]}
+                            handleVote={handleVote}
+                        />
+                    </HStack>
+                )}
+            </Box>
         </>
     );
 }
