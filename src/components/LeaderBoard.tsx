@@ -1,5 +1,5 @@
 import { TriangleUpIcon } from "@chakra-ui/icons";
-import { Box, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
+import { Box, Button, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { LeaderboardDog } from "../types/dog";
@@ -44,6 +44,13 @@ export function Leaderboard(): JSX.Element {
                 {leaderboard === undefined
                     ? null
                     : leaderboard.map((dog) => formatLeaderboardDog(dog))}
+                <Button
+                    variant="solid"
+                    colorScheme="blue"
+                    onClick={() => getAndSetLeaderboard()}
+                >
+                    Refresh
+                </Button>
             </Box>
         </>
     );

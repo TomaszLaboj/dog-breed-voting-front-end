@@ -1,5 +1,5 @@
 export interface Dog {
-    name: string;
+    breed_name: string;
     imageUrl: string;
 }
 

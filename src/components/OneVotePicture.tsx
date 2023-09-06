@@ -23,11 +23,11 @@ export function OneVotePicture({
             <CardBody>
                 <Image
                     src={oneDog.imageUrl}
-                    alt={`${oneDog.name}`}
+                    alt={`${oneDog.breed_name}`}
                     borderRadius="lg"
                 />
                 <Stack mt="6" spacing="3">
-                    <Heading size="md">{oneDog.name}</Heading>
+                    <Heading size="md">{oneDog.breed_name}</Heading>
                 </Stack>
             </CardBody>
             <CardFooter>

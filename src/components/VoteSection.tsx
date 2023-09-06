@@ -6,7 +6,7 @@ import { OneVotePicture } from "./OneVotePicture";
 
 export function VoteSection(): JSX.Element {
     const [dogs, setDogs] = useState<Dog[]>();
-
+    console.log(dogs);
     async function getAndSetDogs() {
         const result = await axios.get(
             "https://dog-breed-voting-back-end.onrender.com/dogs"
@@ -15,7 +15,7 @@ export function VoteSection(): JSX.Element {
     }
     const handleVote = async (oneDog: Dog) => {
         await axios.put(
-            `https://dog-breed-voting-back-end.onrender.com/vote/${oneDog.name}`
+            `https://dog-breed-voting-back-end.onrender.com/vote/${oneDog.breed_name}`
         );
         await getAndSetDogs();
     };
