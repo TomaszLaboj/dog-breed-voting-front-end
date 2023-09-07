@@ -3,10 +3,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Dog } from "../types/dog";
 import { OneVotePicture } from "./OneVotePicture";
+import { useSound } from "use-sound";
+
+import bark from "/bark.wav";
 
 export function VoteSection(): JSX.Element {
     const [dogs, setDogs] = useState<Dog[]>();
     console.log(dogs);
+
+    const [play] = useSound(bark);
+
     async function getAndSetDogs() {
         const result = await axios.get(
             "https://dog-breed-voting-back-end.onrender.com/dogs"
@@ -14,9 +20,11 @@ export function VoteSection(): JSX.Element {
         setDogs(result.data);
     }
     const handleVote = async (oneDog: Dog) => {
+        play();
         await axios.put(
             `https://dog-breed-voting-back-end.onrender.com/vote/${oneDog.breed_name}`
         );
+
         await getAndSetDogs();
     };
 
