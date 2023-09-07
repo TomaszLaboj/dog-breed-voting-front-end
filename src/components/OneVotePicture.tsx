@@ -8,7 +8,7 @@ import {
     Stack,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { getNewDogImage } from "../core/utils";
+import { breed_nameToDisplay_name, getNewDogImage } from "../core/utils";
 import { Dog } from "../types/dog";
 
 interface OneVotePictureProps {
@@ -41,7 +41,9 @@ export function OneVotePicture({
                     onClick={handleImageClick}
                 />
                 <Stack mt="6" spacing="3">
-                    <Heading size="md">{oneDog.breed_name}</Heading>
+                    <Heading size="md">
+                        {breed_nameToDisplay_name(oneDog.breed_name)}
+                    </Heading>
                 </Stack>
             </CardBody>
             <CardFooter>

@@ -7,3 +7,12 @@ export async function getNewDogImage(breed_name: string): Promise<string> {
     const newDogImageURL = response.data.imageUrl;
     return newDogImageURL;
 }
+
+export function breed_nameToDisplay_name(breed_name: string): string {
+    const split_name = breed_name.split("-");
+    if (split_name.length === 1) {
+        return breed_name;
+    }
+    const display_name = [split_name[1], split_name[0]].join(" ");
+    return display_name;
+}
