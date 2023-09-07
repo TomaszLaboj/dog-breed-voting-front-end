@@ -1,32 +1,27 @@
 import { Box, Button, Heading } from "@chakra-ui/react";
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { LeaderboardDog } from "../types/dog";
 import { OneLeaderboardDog } from "./OneLeaderboardDog";
 
-export function Leaderboard(): JSX.Element {
-    const [leaderboard, setLeaderboard] = useState<LeaderboardDog[]>();
+interface LeaderboardProps {
+    leaderboard: LeaderboardDog[] | undefined;
+    getAndSetLeaderboard(): Promise<void>;
+}
 
-    async function getAndSetLeaderboard() {
-        const result = await axios.get(
-            "https://dog-breed-voting-back-end.onrender.com/leaderboard"
-        );
-        setLeaderboard(result.data);
-    }
-
-    useEffect(() => {
-        getAndSetLeaderboard();
-    }, []);
-    console.log(leaderboard);
-
+export function Leaderboard({
+    leaderboard,
+    getAndSetLeaderboard,
+}: LeaderboardProps): JSX.Element {
     return (
         <>
             <Box>
                 <Heading>Top voted dog breeds</Heading>
-                {leaderboard !== undefined &&
+                {leaderboard ? (
                     leaderboard.map((dog) => (
                         <OneLeaderboardDog key={dog.breed_name} dog={dog} />
-                    ))}
+                    ))
+                ) : (
+                    <h4>loading leaderboard</h4>
+                )}
                 <Button
                     variant="solid"
                     colorScheme="blue"

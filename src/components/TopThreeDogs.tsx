@@ -1,10 +1,14 @@
 import { HStack } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { DogWithVotes } from "../types/dog";
+import { DogWithVotes, LeaderboardDog } from "../types/dog";
 import { OneTopDog } from "./OneTopDog";
 
-export function TopThreeDogs(): JSX.Element {
+interface TopThreeDogsProps {
+    leaderboard: LeaderboardDog[] | undefined;
+}
+
+export function TopThreeDogs({ leaderboard }: TopThreeDogsProps): JSX.Element {
     const [topDogs, setTopDogs] = useState<DogWithVotes[]>();
 
     async function getAndSetTopDogs() {
@@ -18,6 +22,10 @@ export function TopThreeDogs(): JSX.Element {
     useEffect(() => {
         getAndSetTopDogs();
     }, []);
+
+    useEffect(() => {
+        getAndSetTopDogs();
+    }, [leaderboard]);
 
     if (topDogs) {
         return (

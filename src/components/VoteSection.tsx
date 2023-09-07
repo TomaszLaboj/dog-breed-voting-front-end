@@ -4,7 +4,13 @@ import { useEffect, useState } from "react";
 import { Dog } from "../types/dog";
 import { OneVotePicture } from "./OneVotePicture";
 
-export function VoteSection(): JSX.Element {
+interface VoteSectionProps {
+    getAndSetLeaderboard(): Promise<void>;
+}
+
+export function VoteSection({
+    getAndSetLeaderboard,
+}: VoteSectionProps): JSX.Element {
     const [dogs, setDogs] = useState<Dog[]>();
     console.log(dogs);
     async function getAndSetDogs() {
@@ -18,6 +24,7 @@ export function VoteSection(): JSX.Element {
             `https://dog-breed-voting-back-end.onrender.com/vote/${oneDog.breed_name}`
         );
         await getAndSetDogs();
+        getAndSetLeaderboard();
     };
 
     useEffect(() => {
