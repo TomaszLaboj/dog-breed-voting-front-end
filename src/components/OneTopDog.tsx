@@ -7,7 +7,7 @@ import {
     Stack,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { getNewDogImage } from "../core/utils";
+import { breed_nameToDisplay_name, getNewDogImage } from "../core/utils";
 import { DogWithVotes } from "../types/dog";
 
 interface OneTopDogProps {
@@ -34,7 +34,9 @@ export function OneTopDog({ topDog }: OneTopDogProps): JSX.Element {
             </CardBody>
             <CardFooter>
                 <Stack mt="6" spacing="3">
-                    <Heading size="md">{topDog.breed_name}</Heading>
+                    <Heading size="md">
+                        {breed_nameToDisplay_name(topDog.breed_name)}
+                    </Heading>
                     <Heading size="md">votes: {topDog.votes}</Heading>
                 </Stack>
             </CardFooter>

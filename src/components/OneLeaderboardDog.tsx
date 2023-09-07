@@ -1,6 +1,7 @@
 import { TriangleUpIcon } from "@chakra-ui/icons";
 import { Card, CardBody, Heading, Stack } from "@chakra-ui/react";
 import { LeaderboardDog } from "../types/dog";
+import { breed_nameToDisplay_name } from "../core/utils";
 
 interface OneLeaderboardDogProps {
     dog: LeaderboardDog;
@@ -18,7 +19,7 @@ export function OneLeaderboardDog({
             <Stack>
                 <CardBody>
                     <Heading size="md">
-                        {dog.breed_name}
+                        {breed_nameToDisplay_name(dog.breed_name)}
                         <TriangleUpIcon />
                         {dog.votes}
                     </Heading>
