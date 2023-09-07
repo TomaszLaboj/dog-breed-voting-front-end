@@ -1,12 +1,12 @@
-import { HStack, Heading } from "@chakra-ui/react";
-import { OneVotePicture } from "./OneVotePicture";
-import { useState, useEffect } from "react";
-import { Dog } from "../types/dog";
+import { Box, Button, HStack, Heading, VStack } from "@chakra-ui/react";
 import axios from "axios";
+import { useEffect, useState } from "react";
+import { Dog } from "../types/dog";
+import { OneVotePicture } from "./OneVotePicture";
 
 export function VoteSection(): JSX.Element {
     const [dogs, setDogs] = useState<Dog[]>();
-
+    console.log(dogs);
     async function getAndSetDogs() {
         const result = await axios.get(
             "https://dog-breed-voting-back-end.onrender.com/dogs"
@@ -15,7 +15,7 @@ export function VoteSection(): JSX.Element {
     }
     const handleVote = async (oneDog: Dog) => {
         await axios.put(
-            `https://dog-breed-voting-back-end.onrender.com/vote/${oneDog.name}`
+            `https://dog-breed-voting-back-end.onrender.com/vote/${oneDog.breed_name}`
         );
         await getAndSetDogs();
     };
@@ -26,15 +26,32 @@ export function VoteSection(): JSX.Element {
 
     return (
         <>
-            <Heading as="h3" size="lg" p={4}>
-                Pick your favourite
-            </Heading>
-            {dogs && (
-                <HStack>
-                    <OneVotePicture oneDog={dogs[0]} handleVote={handleVote} />
-                    <OneVotePicture oneDog={dogs[1]} handleVote={handleVote} />
-                </HStack>
-            )}
+            <Box>
+                <Heading as="h3" size="lg" p={4}>
+                    Pick your favourite
+                </Heading>
+                {dogs && (
+                    <VStack>
+                        <HStack>
+                            <OneVotePicture
+                                oneDog={dogs[0]}
+                                handleVote={handleVote}
+                            />
+                            <OneVotePicture
+                                oneDog={dogs[1]}
+                                handleVote={handleVote}
+                            />
+                        </HStack>
+                        <Button
+                            variant="solid"
+                            colorScheme="blue"
+                            onClick={() => getAndSetDogs()}
+                        >
+                            Skip
+                        </Button>
+                    </VStack>
+                )}
+            </Box>
         </>
     );
 }

@@ -7,6 +7,8 @@ import {
     Image,
     Stack,
 } from "@chakra-ui/react";
+import { useEffect, useState } from "react";
+import { getNewDogImage } from "../core/utils";
 import { Dog } from "../types/dog";
 
 interface OneVotePictureProps {
@@ -18,16 +20,28 @@ export function OneVotePicture({
     oneDog,
     handleVote,
 }: OneVotePictureProps): JSX.Element {
+    const [imageURL, setImageURL] = useState(oneDog.imageUrl);
+
+    useEffect(() => {
+        setImageURL(oneDog.imageUrl);
+    }, [oneDog]);
+
+    async function handleImageClick() {
+        const newImageUrl = await getNewDogImage(oneDog.breed_name);
+        setImageURL(newImageUrl);
+    }
+
     return (
         <Card maxW="sm">
             <CardBody>
                 <Image
-                    src={oneDog.imageUrl}
-                    alt={`${oneDog.name}`}
+                    src={imageURL}
+                    alt={`${oneDog.breed_name}`}
                     borderRadius="lg"
+                    onClick={handleImageClick}
                 />
                 <Stack mt="6" spacing="3">
-                    <Heading size="md">{oneDog.name}</Heading>
+                    <Heading size="md">{oneDog.breed_name}</Heading>
                 </Stack>
             </CardBody>
             <CardFooter>

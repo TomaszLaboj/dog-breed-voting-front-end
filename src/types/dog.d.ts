@@ -1,4 +1,13 @@
 export interface Dog {
-    name: string;
+    breed_name: string;
     imageUrl: string;
+}
+
+export interface LeaderboardDog {
+    breed_name: string;
+    votes: number;
+}
+
+export interface DogWithVotes extends Dog {
+    votes: number;
 }
