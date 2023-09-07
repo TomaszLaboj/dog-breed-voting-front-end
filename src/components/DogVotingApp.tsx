@@ -6,6 +6,7 @@ import { TopThreeDogs } from "./TopThreeDogs";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { LeaderboardDog } from "../types/dog";
+import { Footer } from "./Footer";
 
 export function DogVotingApp(): JSX.Element {
     const [leaderboard, setLeaderboard] = useState<LeaderboardDog[]>();
@@ -26,7 +27,7 @@ export function DogVotingApp(): JSX.Element {
         <>
             <Header />
             <Grid
-                templateRows="repeat(2, 1fr)"
+                templateRows="repeat(1, 1fr)"
                 templateColumns="repeat(2, 1fr)"
                 gap={4}
             >
@@ -39,6 +40,7 @@ export function DogVotingApp(): JSX.Element {
                     getAndSetLeaderboard={getAndSetLeaderboard}
                 />
             </Grid>
+            <Footer />
         </>
     );
 }
