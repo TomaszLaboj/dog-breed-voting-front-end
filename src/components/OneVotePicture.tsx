@@ -7,10 +7,9 @@ import {
     Image,
     Stack,
 } from "@chakra-ui/react";
-import { Dog } from "../types/dog";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { getNewDogImage } from "../core/utils";
+import { Dog } from "../types/dog";
 
 interface OneVotePictureProps {
     oneDog: Dog;
