@@ -1,6 +1,6 @@
 import { TriangleUpIcon } from "@chakra-ui/icons";
-import { Card, Stack, CardBody, Heading } from "@chakra-ui/react";
-import { Dog, LeaderboardDog } from "../types/dog";
+import { Card, CardBody, Heading, Stack } from "@chakra-ui/react";
+import { LeaderboardDog } from "../types/dog";
 
 interface OneLeaderboardDogProps {
     dog: LeaderboardDog;

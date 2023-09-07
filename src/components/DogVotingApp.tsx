@@ -1,7 +1,8 @@
-import { Grid } from "@chakra-ui/react";
+import { Grid, VStack } from "@chakra-ui/react";
 import { Header } from "./Header";
 import { Leaderboard } from "./LeaderBoard";
 import { VoteSection } from "./VoteSection";
+import { TopThreeDogs } from "./TopThreeDogs";
 
 export function DogVotingApp(): JSX.Element {
     return (
@@ -12,7 +13,10 @@ export function DogVotingApp(): JSX.Element {
                 templateColumns="repeat(2, 1fr)"
                 gap={4}
             >
-                <VoteSection />
+                <VStack>
+                    <TopThreeDogs />
+                    <VoteSection />
+                </VStack>
                 <Leaderboard />
             </Grid>
         </>

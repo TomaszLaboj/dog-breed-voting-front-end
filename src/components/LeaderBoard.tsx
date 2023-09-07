@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
+import { Box, Button, Heading } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { LeaderboardDog } from "../types/dog";

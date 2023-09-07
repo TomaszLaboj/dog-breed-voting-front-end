@@ -10,6 +10,7 @@ import {
 import { Dog } from "../types/dog";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { getNewDogImage } from "../core/utils";
 
 interface OneVotePictureProps {
     oneDog: Dog;
@@ -26,12 +27,9 @@ export function OneVotePicture({
         setImageURL(oneDog.imageUrl);
     }, [oneDog]);
 
-    async function getAndSetNewImage() {
-        const response = await axios.get(
-            `https://dog-breed-voting-back-end.onrender.com/dogs/${oneDog.breed_name}`
-        );
-        const newDogImageURL = response.data.imageUrl;
-        setImageURL(newDogImageURL);
+    async function handleImageClick() {
+        const newImageUrl = await getNewDogImage(oneDog.breed_name);
+        setImageURL(newImageUrl);
     }
 
     return (
@@ -41,7 +39,7 @@ export function OneVotePicture({
                     src={imageURL}
                     alt={`${oneDog.breed_name}`}
                     borderRadius="lg"
-                    onClick={() => getAndSetNewImage()}
+                    onClick={handleImageClick}
                 />
                 <Stack mt="6" spacing="3">
                     <Heading size="md">{oneDog.breed_name}</Heading>

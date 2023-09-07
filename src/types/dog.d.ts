@@ -7,3 +7,7 @@ export interface LeaderboardDog {
     breed_name: string;
     votes: number;
 }
+
+export interface DogWithVotes extends Dog {
+    votes: number;
+}
