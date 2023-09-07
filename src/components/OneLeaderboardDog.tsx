@@ -1,8 +1,14 @@
 import { TriangleUpIcon } from "@chakra-ui/icons";
 import { Card, Stack, CardBody, Heading } from "@chakra-ui/react";
-import { LeaderboardDog } from "../types/dog";
+import { Dog, LeaderboardDog } from "../types/dog";
 
-export function OneLeaderboardDog(dog: LeaderboardDog): JSX.Element {
+interface OneLeaderboardDogProps {
+    dog: LeaderboardDog;
+}
+
+export function OneLeaderboardDog({
+    dog,
+}: OneLeaderboardDogProps): JSX.Element {
     return (
         <Card
             direction={{ base: "column", sm: "row" }}

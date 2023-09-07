@@ -2,7 +2,7 @@ import { Box, Button, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { LeaderboardDog } from "../types/dog";
-import { OneLeaderboardDog, formatLeaderboardDog } from "./OneLeaderboardDog";
+import { OneLeaderboardDog } from "./OneLeaderboardDog";
 
 export function Leaderboard(): JSX.Element {
     const [leaderboard, setLeaderboard] = useState<LeaderboardDog[]>();
