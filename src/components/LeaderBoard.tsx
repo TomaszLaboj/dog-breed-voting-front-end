@@ -1,8 +1,8 @@
-import { TriangleUpIcon } from "@chakra-ui/icons";
 import { Box, Button, Card, CardBody, Heading, Stack } from "@chakra-ui/react";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { LeaderboardDog } from "../types/dog";
+import { OneLeaderboardDog, formatLeaderboardDog } from "./OneLeaderboardDog";
 
 export function Leaderboard(): JSX.Element {
     const [leaderboard, setLeaderboard] = useState<LeaderboardDog[]>();
@@ -18,32 +18,15 @@ export function Leaderboard(): JSX.Element {
         getAndSetLeaderboard();
     }, []);
     console.log(leaderboard);
-    function formatLeaderboardDog(dog: LeaderboardDog) {
-        return (
-            <Card
-                direction={{ base: "column", sm: "row" }}
-                overflow="hidden"
-                variant="outline"
-            >
-                <Stack>
-                    <CardBody>
-                        <Heading size="md">
-                            {dog.breed_name}
-                            <TriangleUpIcon />
-                            {dog.votes}
-                        </Heading>
-                    </CardBody>
-                </Stack>
-            </Card>
-        );
-    }
+
     return (
         <>
             <Box>
                 <Heading>Top voted dog breeds</Heading>
-                {leaderboard === undefined
-                    ? null
-                    : leaderboard.map((dog) => formatLeaderboardDog(dog))}
+                {leaderboard !== undefined &&
+                    leaderboard.map((dog) => (
+                        <OneLeaderboardDog key={dog.breed_name} dog={dog} />
+                    ))}
                 <Button
                     variant="solid"
                     colorScheme="blue"
