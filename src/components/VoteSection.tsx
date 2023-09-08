@@ -7,7 +7,13 @@ import { useSound } from "use-sound";
 
 import bark from "/bark.wav";
 
-export function VoteSection(): JSX.Element {
+interface VoteSectionProps {
+    getAndSetLeaderboard(): Promise<void>;
+}
+
+export function VoteSection({
+    getAndSetLeaderboard,
+}: VoteSectionProps): JSX.Element {
     const [dogs, setDogs] = useState<Dog[]>();
     console.log(dogs);
 
@@ -26,6 +32,7 @@ export function VoteSection(): JSX.Element {
         );
 
         await getAndSetDogs();
+        getAndSetLeaderboard();
     };
 
     useEffect(() => {
